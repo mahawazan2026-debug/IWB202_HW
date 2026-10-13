@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://w3.org">
+<html xmlns="http://w3.org" xml:lang="ar" lang="ar">
+<head>
+    <title>بوابة استعراض وحجز المركبات</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="myFunctions.js"></script>
+</head>
+<body>
+
+    <nav>
+        <a href="home.html">الرئيسية</a>
+        <a href="AboutUs.html">من نحن</a>
+        <a href="Cars.html">السيارات المتاحة</a>
+    </nav>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <img src="images/SVU-LOGO.jpg" alt="الجامعة الافتراضية السورية" width="140" />
+        </div>
+
+        <h1>أسطول السيارات المتاحة للتأجير</h1>
+        <p>الرجاء اختيار المركبات المناسبة لطلبك، وتفعيل خيار التفاصيل لمطالعة مواصفات المحرك ونوع ناقل الحركة.</p>
+        
+        <table id="carsTable">
+            <thead>
+                <tr>
+                    <th>كود المركبة</th>
+                    <th>الموديل والفئة</th>
+                    <th>سنة الإنتاج</th>
+                    <th>التكلفة اليومية</th>
+                    <th>المواصفات</th>
+                    <th>طلب حجز</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- سيارة 1 -->
+                <tr>
+                    <td>CAR-X91</td>
+                    <td class="car-model">Mazda 6 Sedan</td>
+                    <td>2024</td>
+                    <td><span class="price-val">320000</span> ل.س</td>
+                    <td><input type="checkbox" class="btn-toggle-details" /></td>
+                    <td><input type="checkbox" class="select-car" value="CAR-X91" /></td>
+                </tr>
+                <tr class="details-row" style="display: none;">
+                    <td colspan="6">
+                        بيانات المحرك: 2.5L SkyActiv | ناقل حركة أوتوماتيكي بـ 6 سرعات | فرش مخمل فاخر | اللون: أحمر مازدا الشهير.
+                    </td>
+                </tr>
+
+                <!-- سيارة 2 -->
+                <tr>
+                    <td>CAR-X92</td>
+                    <td class="car-model">Nissan X-Trail</td>
+                    <td>2023</td>
+                    <td><span class="price-val">480000</span> ل.س</td>
+                    <td><input type="checkbox" class="btn-toggle-details" /></td>
+                    <td><input type="checkbox" class="select-car" value="CAR-X92" /></td>
+                </tr>
+                <tr class="details-row" style="display: none;">
+                    <td colspan="6">
+                        بيانات المحرك: عائلي دفع رباعي مستمر | سعة المقاعد: 7 ركاب | سقف بانوراما بالكامل | عداد المسافات: 15,000 كم.
+                    </td>
+                </tr>
+
+                <!-- سيارة 3 -->
+                <tr>
+                    <td>CAR-X93</td>
+                    <td class="car-model">Honda Civic Sport</td>
+                    <td>2024</td>
+                    <td><span class="price-val">350000</span> ل.س</td>
+                    <td><input type="checkbox" class="btn-toggle-details" /></td>
+                    <td><input type="checkbox" class="select-car" value="CAR-X93" /></td>
+                </tr>
+                <tr class="details-row" style="display: none;">
+                    <td colspan="6">
+                        بيانات المحرك: تيربو رياضي اقتصادي | ناقل الحركة: CVT مع بدالات سرعة خلف المقود | اللون: رمادي إسمنتي.
+                    </td>
+                </tr>
+
+                <!-- سيارة 4 -->
+                <tr>
+                    <td>CAR-X94</td>
+                    <td class="car-model">Suzuki Swift</td>
+                    <td>2022</td>
+                    <td><span class="price-val">190000</span> ل.س</td>
+                    <td><input type="checkbox" class="btn-toggle-details" /></td>
+                    <td><input type="checkbox" class="select-car" value="CAR-X94" /></td>
+                </tr>
+                <tr class="details-row" style="display: none;">
+                    <td colspan="6">
+                        بيانات المحرك: 1.2L اقتصادي جداً للمدينة | ناقل الحركة: يدوي (مانيوال) | اللون: أزرق ميتاليك.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button type="button" id="btnContinue">المتابعة وتعبئة بيانات الحجز</button>
+        </div>
+
+        <!-- قسم النموذج الإلكتروني -->
+        <div id="formSection" style="display: none;">
+            <form id="rentalForm" action="#" method="post" onsubmit="return validateForm();">
+                <fieldset>
+                    <legend>استمارة الحجز والتدقيق الرقمي</legend>
+
+                    <label for="fullName">الاسم الثلاثي للمستأجر (باللغة العربية حصراً):</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="مثال: أحمد راتب المصري" />
+
+                    <label for="nationalId">الرقم الوطني السوري (11 خانة - يبدأ من 01 حتى 14):</label>
+                    <input type="text" id="nationalId" name="nationalId" maxlength="11" placeholder="تأكد من كتابة 11 رقماً بدقة" />
+
+                    <label for="startDate">تاريخ استلام السيارة:</label>
+                    <input type="date" id="startDate" name="startDate" />
+
+                    <label for="endDate">تاريخ إعادة السيارة:</label>
+                    <input type="date" id="endDate" name="endDate" />
+
+                    <label for="mobile">رقم الاتصال المباشر (سيريتل أو إم تي إن):</label>
+                    <input type="text" id="mobile" name="mobile" placeholder="مثال: 09XXXXXXXX" />
+
+                    <label for="email">عنوان البريد الإلكتروني للمراسلة:</label>
+                    <input type="email" id="email" name="email" placeholder="client@mail.com" />
+
+                    <div style="text-align: center;">
+                        <input type="submit" value="تأكيد وإرسال طلب الحجز" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © المادة: تصميم وتطوير تطبيقات الوب - SVU</p>
+    </footer>
+
+</body>
+</html>
